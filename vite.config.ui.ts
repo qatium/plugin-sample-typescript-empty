@@ -3,7 +3,10 @@ import { viteSingleFile } from "vite-plugin-singlefile"
 
 export default defineConfig(() => {
   return {
+    root: "./src/ui",
+    publicDir: "../public",
     build: {
+      outDir: "../../dist",
       emptyOutDir: false
     },
     plugins: [viteSingleFile(), {

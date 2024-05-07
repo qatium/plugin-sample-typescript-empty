@@ -4,20 +4,29 @@
   "type": "module",
   "scripts": {
     "vite:ui": "vite --config vite.config.ui.ts",
-    "vite:plugin": "vite --config vite.config.plugin.ts build",
+    "vite:engine": "vite --config vite.config.engine.ts build",
     "dev": "concurrently \"npm:dev:*\"",
     "dev:ui": "npm run vite:ui",
-    "dev:plugin": "npm run vite:plugin -- --watch",
-    "build": "rimraf dist && npm run build:plugin && npm run build:ui",
-    "build:ui": "tsc --project ui/tsconfig.json && rm -f public/engine.js && npm run vite:ui -- build",
-    "build:plugin": "tsc --project plugin/tsconfig.json && npm run vite:plugin -- --outDir dist"
+    "dev:engine": "npm run vite:engine -- --watch",
+    "test": "jest --verbose",
+    "test:watch": "pnpm run test --watchAll -i --no-cache",
+    "build": "rimraf dist && npm run build:engine && npm run build:ui",
+    "build:ui": "tsc --project src/ui/tsconfig.json && rm -f public/engine.js && npm run vite:ui -- build",
+    "build:engine": "tsc --project src/engine/tsconfig.json && npm run vite:engine -- --outDir dist"
   },
   "devDependencies": {
+    "@testing-library/dom": "^9.3.4",
+    "@testing-library/jest-dom": "^6.3.0",
+    "@types/jest": "^29.5.11",
     "concurrently": "^8.2.2",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-watch-typeahead": "^2.2.2",
+    "jest": "^29.7.0",
     "rimraf": "^5.0.5",
+    "ts-jest": "^29.1.2",
     "typescript": "^5.2.2",
-    "vite": "^5.0.8",
-    "vite-plugin-singlefile": "^1.0.0"
+    "vite-plugin-singlefile": "^1.0.0",
+    "vite": "^5.0.8"
   },
   "dependencies": {
     "@qatium/plugin": "^0.0.25"
