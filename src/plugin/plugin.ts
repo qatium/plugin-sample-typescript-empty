@@ -1,3 +1,3 @@
-import { Plugin } from "@qatium/plugin";
+import { Plugin } from "@qatium/sdk/plugin";
 
 export class MyPlugin implements Plugin {}

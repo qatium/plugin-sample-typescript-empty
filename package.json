@@ -25,6 +25,6 @@
     "vite-plugin-singlefile": "^1.0.0"
   },
   "dependencies": {
-    "@qatium/plugin": "latest"
+    "@qatium/sdk": "latest"
   }
 }
